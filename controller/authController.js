@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
       user = new User({ username, email, password });
       await user.save();
   
-     return res.json({ message: 'User registered successfully' , user : user });
+     return res.status(200).json({ message: 'User registered successfully' , user : user });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
 
       jwt.sign(payload, process.env.JWT_SECRET, (err, token) => {
         if (err) throw err;
-        res.json({ token : token , user : user });
+        res.status(200).json({ token : token , user : user });
       });
 
     } catch (err) {
