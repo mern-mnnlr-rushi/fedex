@@ -2,8 +2,8 @@ import express from 'express';
 import { check } from 'express-validator';
 import { registerUser, loginUser } from '../controller/authController.js';
 
-const router = express.Router();
 
+const router = express.Router();
 
 router.post('/register', [
   check('username', 'Username is required').not().isEmpty(),

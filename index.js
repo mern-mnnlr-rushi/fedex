@@ -3,7 +3,7 @@ import authRoutes from './routes/auth.js';
 import cors from 'cors'
 import './connect/db.js';
 import isAuthenticated from './middleware/isAuthenticated.js';
-
+import tracking from './routes/trackingRout.js'
 const app = express();
 const port = 3000;
 
@@ -12,6 +12,8 @@ app.use(express.json());
 
 
 app.use('/api', authRoutes);
+app.use('/api', tracking);
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
