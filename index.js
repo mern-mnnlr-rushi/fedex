@@ -4,6 +4,7 @@ import cors from 'cors'
 import './connect/db.js';
 import isAuthenticated from './middleware/isAuthenticated.js';
 import tracking from './routes/trackingRout.js'
+
 const app = express();
 const port = 3000;
 
