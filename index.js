@@ -8,7 +8,10 @@ import UserSpecific from './routes/userSpecificRoute.js'
 const app = express();
 const port = 3000;
 connectDB();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true, // Allow credentials
+}));
 app.use(express.json());
 
 
@@ -21,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.put('/user', isAuthenticated, (req, res) => {
-  res.json({userId : req.user, message : "User can acces protected rout"});
+  res.json({ userId: req.user, message: "User can acces protected rout" });
 });
 
 app.listen(port, () => {

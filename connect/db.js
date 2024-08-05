@@ -2,8 +2,7 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://yashmaurya2109:6QXah16D98N0k8Kh@cluster0.9lkwzhh.mongodb.net/FedEx', {
- 
+    await mongoose.connect('mongodb://127.0.0.1:27017/TrackingProduct', {
     });
     console.log('MongoDB connected');
   } catch (err) {
