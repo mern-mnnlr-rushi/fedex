@@ -5,7 +5,9 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  token : { type: String}
+  productTracking: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tracking' }],
+    orderTracking: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tracking' }]
+
 });
 
 userSchema.pre('save', async function(next) {

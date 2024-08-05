@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
       }
   
       
-      user = new User({ username, email, password });
+      user = new User({ username, email, password, productTracking: [], orderTracking : []  });
       await user.save();
   
      return res.status(200).json({ message : 'User registered successfully' , user : user });

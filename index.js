@@ -1,20 +1,20 @@
 import express from 'express';
 import authRoutes from './routes/auth.js';
 import cors from 'cors'
-import './connect/db.js';
+import connectDB from './connect/db.js';
 import isAuthenticated from './middleware/isAuthenticated.js';
 import tracking from './routes/trackingRout.js'
-
+import UserSpecific from './routes/userSpecificRoute.js'
 const app = express();
 const port = 3000;
-
+connectDB();
 app.use(cors());
 app.use(express.json());
 
 
 app.use('/api', authRoutes);
 app.use('/api', tracking);
-
+app.use('/api/v1', UserSpecific);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
