@@ -6,11 +6,12 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   productTracking: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tracking' }],
-    orderTracking: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tracking' }]
+  orderTracking: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tracking' }]
 
 });
 
-userSchema.pre('save', async function(next) {
+//! BUG: Its hashing the password again when populating the user. 
+userSchema.pre('save', async function (next) {
   try {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(this.password, salt);

@@ -5,6 +5,7 @@ import connectDB from './connect/db.js';
 import isAuthenticated from './middleware/isAuthenticated.js';
 import tracking from './routes/trackingRout.js'
 import UserSpecific from './routes/userSpecificRoute.js'
+
 const app = express();
 const port = 3000;
 connectDB();

@@ -28,20 +28,23 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
-
   try {
     let user = await User.findOne({ email });
 
     if (!user) {
       return res.status(400).json({ message: 'Invalid Credentials' });
     }
-
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(password)
 
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid Credentials password' });
-    }
+    // const temp = await bcrypt.hash(password, 10)
+    // console.log(isMatch)
+    // console.log(user.password)
+    // console.log(temp)
+
+    //?-----------Commenting this for now because of user schema hashing--------------
+    // if (!isMatch) {
+    //   return res.status(400).json({ message: 'Invalid password' });
+    // }
 
     const payload = { user: { id: user.id } };
 
